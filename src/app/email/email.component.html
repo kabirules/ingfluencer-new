@@ -1,0 +1,12 @@
+<p>
+  email works!
+</p>
+<a routerLink="/login" id="goback">Go back</a>
+<form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+
+  <input type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
+  <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
+
+  <button type="submit" [disabled]="!formData.valid">Log in</button>
+  <a routerLink="/signup">Don't have an account?</a>
+</form>
