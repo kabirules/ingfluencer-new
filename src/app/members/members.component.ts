@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
-import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-members',
@@ -14,26 +13,14 @@ export class MembersComponent implements OnInit {
   user: any;
 
   constructor(public afa: AngularFireAuth, private router: Router) {
-    this.user = firebase.auth().currentUser;
-    this.name = this.user.displayName;
-    console.log(this.name);
-    //console.log('login-constructor');
-    //var user = firebase.auth().currentUser;
-    //if (user) {
-    //  this.router.navigateByUrl('/members');
-    //} else {
-    //  // No user is signed in.
-    //};    
-  }  
-
-//  constructor(public afa: AngularFireAuth, private router: Router) {
-//
-//    if(this.afa.authState) {
-//      this.name = this.afa.auth.currentUser;
-//      console.log(this.name);
-//      console.log(this.afa.authState);
-//    };
-//  }
+    console.log('members');
+    console.log(this.afa.authState);    
+    if(this.afa.authState) {
+      this.name = this.afa.auth.currentUser.email;
+      console.log('already looged');
+      console.log(this.name);
+    };
+  }
 
   logout() {
     this.afa.auth.signOut();
@@ -42,8 +29,6 @@ export class MembersComponent implements OnInit {
  }
 
   ngOnInit() {
-    //this.name = 'AARRASSSS'
-    this.name = this.user.displayName;
   }
 
 }

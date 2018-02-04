@@ -10,22 +10,13 @@ import * as firebase from 'firebase/app';
 })
 export class LoginComponent implements OnInit {
 
-//  constructor(public afa: AngularFireAuth, private router: Router) {
-//    console.log('login-constructor');
-//    var user = firebase.auth().currentUser;
-//    if (user) {
-//      this.router.navigateByUrl('/members');
-//    } else {
-//      // No user is signed in.
-//    };    
-//  }
-
-constructor(public afa: AngularFireAuth, private router: Router) {
-  //console.log('cons -> ' + this.afa.authState);
-  //if(this.afa.authState) {
-  //  this.router.navigateByUrl('/members');
-  //};
-}
+  constructor(public afa: AngularFireAuth, private router: Router) {
+    console.log('login');
+    console.log(this.afa.authState);
+    if(this.afa.authState) {
+      this.router.navigateByUrl('/members');
+    };
+  }
 
   loginGoogle() {
     this.afa.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())

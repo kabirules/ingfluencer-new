@@ -9,9 +9,10 @@ import { FormsModule }   from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MembersComponent } from './members/members.component';
-import { routes } from './app.routes';
 import { EmailComponent } from './email/email.component';
 import { SignupComponent } from './signup/signup.component';
+import { AuthGuard } from './auth.service';
+import { routes } from './app.routes';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { SignupComponent } from './signup/signup.component';
     routes,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

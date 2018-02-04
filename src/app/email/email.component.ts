@@ -10,9 +10,11 @@ import { Router } from '@angular/router';
 export class EmailComponent implements OnInit {
 
   constructor(public afa: AngularFireAuth, private router: Router) {
-    //if(this.af.authState) {
-    //  this.router.navigateByUrl('/members');
-    //};
+    console.log('email-component');
+    console.log(this.afa.authState);
+    if(this.afa.authState) {
+      //this.router.navigateByUrl('/members');
+    };
   }
 
   ngOnInit() {
