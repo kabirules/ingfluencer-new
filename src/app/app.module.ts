@@ -4,6 +4,7 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FormsModule }   from '@angular/forms';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 
 import { AppComponent } from './app.component';
@@ -28,7 +29,8 @@ import { routes } from './app.routes';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     routes,
-    FormsModule
+    FormsModule,
+    AngularFireDatabaseModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
