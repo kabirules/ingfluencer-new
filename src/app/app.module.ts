@@ -5,6 +5,7 @@ import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FormsModule }   from '@angular/forms';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppComponent } from './app.component';
@@ -30,7 +31,8 @@ import { routes } from './app.routes';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     routes,
     FormsModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    NgbModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

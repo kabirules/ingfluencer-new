@@ -1,10 +1,10 @@
 <a routerLink="/login" id="goback">Go back</a>
+<form class="form-signin" #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+  <label for="inputEmail" class="sr-only">Email address</label>
+  <input id="inputEmail" type="text" placeholder="Email address" (ngModel)="email" name="email" class="form-control" required autofocus>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input id="inputPassword" type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" class="form-control" required>
 
-<form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
 
-  <input type="text" placeholder="Email address" (ngModel)="email" name="email" class="txt" required>
-  <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
-
-
-  <button type="submit" [disabled]="!formData.valid">Create my account</button>
+  <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!formData.valid">Create my account</button>
 </form>

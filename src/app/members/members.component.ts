@@ -24,7 +24,7 @@ export class MembersComponent implements OnInit {
       this.name = this.afa.auth.currentUser.email;
       console.log('already looged');
       console.log(this.name);
-      this.itemRef = db.object('item');
+      this.itemRef = db.object('/aaa/itemB');
       this.item = this.itemRef.valueChanges();
     };
   }
