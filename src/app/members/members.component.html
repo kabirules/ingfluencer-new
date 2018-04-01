@@ -1,21 +1,19 @@
-<nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Ingfluencer</a>
-</nav>
-<br/>
-<div style="margin-left:50px">
-    <p>Welcome {{name}}</p>
-    <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
-        <input type="text" placeholder="youtube channel" (ngModel)="youtubeId" name="youtubeId" required>
-        <button type="submit" [disabled]="!formData.valid">Save</button>
-    </form>    
-    <button (click)="logout()">Logout</button>
-    <div>
-        <h1>{{ item | async | json }}</h1>
+<div class="jumbotron">
+    <div class="container">
+        <p>Welcome {{name}}</p>
+        <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+            <input type="text" placeholder="youtube channel" (ngModel)="youtubeId" name="youtubeId" required>
+            <button type="submit" [disabled]="!formData.valid">Save</button>
+        </form>    
+        <button (click)="logout()">Logout</button>
+        <div>
+            <h1>{{ item | async | json }}</h1>
+        </div>
+        <input type="text" #newname placeholder="Name" />
+        <input type="text" #newsize placeholder="Size" />
+        <br />
+        <button (click)="save(newname.value)">Set Name</button><br/>
+        <button (click)="update(newsize.value)">Update Size</button><br/>
+        <button (click)="delete()">Delete</button>
     </div>
-    <input type="text" #newname placeholder="Name" />
-    <input type="text" #newsize placeholder="Size" />
-    <br />
-    <button (click)="save(newname.value)">Set Name</button><br/>
-    <button (click)="update(newsize.value)">Update Size</button><br/>
-    <button (click)="delete()">Delete</button>
 </div>
