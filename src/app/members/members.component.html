@@ -1,4 +1,8 @@
-<div class="jumbotron">
+<div style="background-color: #e9ecef; height:100vh">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" routerLink="/">Ingfluencer</a>
+    </nav>
+    <hr>
     <div class="container">
         <p>Welcome {{name}}</p>
         <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
@@ -7,7 +11,7 @@
         </form>    
         <button (click)="logout()">Logout</button>
         <div>
-            <h1>{{ item | async | json }}</h1>
+            <h2>{{ item | async | json }}</h2>
         </div>
         <input type="text" #newname placeholder="Name" />
         <input type="text" #newsize placeholder="Size" />

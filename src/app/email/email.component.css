@@ -4,14 +4,17 @@
   height: 100%;
   vertical-align: bottom;
 }
-
+h1 {
+  text-align: center;
+}
+/*
 .vertical-center {
-  min-height: 40%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 40%;   Fallback for browsers do NOT support vh unit 
   min-height: 40vh; 
   display: flex;
   align-items: center;
 }
-
+*/
 .margin-top {
   margin-top: .5rem;
 }
