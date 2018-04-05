@@ -20,6 +20,7 @@ export class MembersComponent implements OnInit {
   item: Observable<any>;
 
   uid: string;
+  youtubeId: string;
 
   constructor(public afa: AngularFireAuth, private router: Router, db: AngularFireDatabase) {
     if(this.afa.authState) {
@@ -29,7 +30,6 @@ export class MembersComponent implements OnInit {
       this.youtubeUserRef = db.object('/users/'+this.uid+"/youtube");
       this.youtubeChannelUserRef = db.object('/users/'+this.uid+"/youtube/channelId");
       this.item = this.youtubeChannelUserRef.valueChanges();
-      console.log(this.item);
     };
   }
 
@@ -38,12 +38,11 @@ export class MembersComponent implements OnInit {
 
   logout() {
     this.afa.auth.signOut();
-    console.log('logged out');
     this.router.navigateByUrl('/login');
   }
 
-  save(newName: string) {
-    this.youtubeUserRef.set({channelId:newName});
+  save() {
+    this.youtubeUserRef.set({channelId:this.youtubeId});
   }
   update(newSize: string) {
     this.userRef.update({ size: newSize });

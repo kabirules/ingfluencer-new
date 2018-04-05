@@ -6,8 +6,8 @@
     <div class="container">
         <p>Welcome {{name}}</p>
         <label>Enter your youtube channel id:</label>
-        <input type="text" placeholder="youtube channel" #youtubeId required>
-        <button (click)="save(youtubeId.value)" type="submit">Save</button>
+        <input type="text" placeholder="youtube channel"  [(ngModel)]="youtubeId" required>
+        <button (click)="save()" type="submit">Save</button>
         <hr>
         <button (click)="logout()">Logout</button>
         <div>
@@ -19,7 +19,7 @@
         <input type="text" #newname placeholder="Name" />
         <input type="text" #newsize placeholder="Size" />
         <br />
-        <button (click)="save(newname.value)">Set Name</button><br/>
+        <button (click)="save()">Set Name</button><br/>
         <button (click)="update(newsize.value)">Update Size</button><br/>
         <button (click)="delete()">Delete</button>
     </div>
