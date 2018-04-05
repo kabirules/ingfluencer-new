@@ -5,13 +5,16 @@
     <hr>
     <div class="container">
         <p>Welcome {{name}}</p>
-        <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
-            <input type="text" placeholder="youtube channel" (ngModel)="youtubeId" name="youtubeId" required>
-            <button type="submit" [disabled]="!formData.valid">Save</button>
-        </form>    
+        <label>Enter your youtube channel id:</label>
+        <input type="text" placeholder="youtube channel" #youtubeId required>
+        <button (click)="save(youtubeId.value)" type="submit">Save</button>
+        <hr>
         <button (click)="logout()">Logout</button>
         <div>
+            <!--
             <h2>{{ item | async | json }}</h2>
+            -->
+            <h2>{{ item | async }}</h2>
         </div>
         <input type="text" #newname placeholder="Name" />
         <input type="text" #newsize placeholder="Size" />

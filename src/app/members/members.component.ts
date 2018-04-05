@@ -14,18 +14,22 @@ export class MembersComponent implements OnInit {
   name: any;
   user: any;
 
-  itemRef: AngularFireObject<any>;
+  userRef: AngularFireObject<any>;
+  youtubeUserRef: AngularFireObject<any>;
+  youtubeChannelUserRef: AngularFireObject<any>;
   item: Observable<any>;
 
+  uid: string;
+
   constructor(public afa: AngularFireAuth, private router: Router, db: AngularFireDatabase) {
-    console.log('members');
-    console.log(this.afa.authState);    
     if(this.afa.authState) {
-      this.name = this.afa.auth.currentUser.email;
-      console.log('already looged');
-      console.log(this.name);
-      this.itemRef = db.object('/aaa/itemB');
-      this.item = this.itemRef.valueChanges();
+      this.uid = this.afa.auth.currentUser.uid;
+      this.name = this.afa.auth.currentUser.displayName==null?this.afa.auth.currentUser.email:this.afa.auth.currentUser.displayName;
+      this.userRef = db.object('/users/'+this.uid);
+      this.youtubeUserRef = db.object('/users/'+this.uid+"/youtube");
+      this.youtubeChannelUserRef = db.object('/users/'+this.uid+"/youtube/channelId");
+      this.item = this.youtubeChannelUserRef.valueChanges();
+      console.log(this.item);
     };
   }
 
@@ -38,20 +42,14 @@ export class MembersComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
-  onSubmit(formData) {
-    if(formData.valid) {
-      console.log(formData.value.youtubeId);
-    }
-  }
-
   save(newName: string) {
-    this.itemRef.set({ name: newName });
+    this.youtubeUserRef.set({channelId:newName});
   }
   update(newSize: string) {
-    this.itemRef.update({ size: newSize });
+    this.userRef.update({ size: newSize });
   }
   delete() {
-    this.itemRef.remove();
+    this.userRef.remove();
   }  
 
 }
